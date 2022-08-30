@@ -1,0 +1,16 @@
+function run() {
+  const items = {
+		
+  }
+
+  for (const [id, value] of Object.entries(items)) {
+    const event = new Event('change')
+    Object.defineProperty(event, 'target', { writable: true, value: { value }})
+    const element = document.getElementById(id)
+    if (!element) continue;
+    element.value = value;
+    element.dispatchEvent(event)
+  }
+}
+
+run()
