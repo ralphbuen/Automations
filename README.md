@@ -51,3 +51,17 @@ https://user-images.githubusercontent.com/106564201/188076157-f95c8ca5-f5b3-44d0
 
 https://user-images.githubusercontent.com/106564201/188078951-64a2f607-edc0-492b-bb1b-19c024100a62.mp4
 
+14. Now we will be removing the `<tr id="`s. To do this, we have to type `<tr id="` in the Find section. After that, we will now replace it with nothing to delete the tag.
+
+https://user-images.githubusercontent.com/106564201/188338144-c5a4617b-469d-4105-872b-8a400d783556.mp4
+
+15. After modifying the file, paste it on Excel and it will look like the screenshot below
+
+![image](https://user-images.githubusercontent.com/106564201/188343248-5e544a0e-3184-437f-bd57-a20a80c20496.png)
+
+16. Interchange the two columns in any method that you want so it would look like this:
+
+![image](https://user-images.githubusercontent.com/106564201/188343305-1a28d84e-5a87-4711-ac82-93f2b9689000.png)
+
+17. Now, copy and paste the modified file in the Notepad++ once again.
+
