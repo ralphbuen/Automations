@@ -65,3 +65,115 @@ https://user-images.githubusercontent.com/106564201/188338144-c5a4617b-469d-4105
 
 17. Now, copy and paste the modified file in the Notepad++ once again.
 
+18. We will now proceed to modify these data into VBA code. What we will do first is to press `Ctrl + A` to select all of the codes and then we will be modifying. After selecting them all, press `Ctrl + F` to open the Find Window then in the Find box, type in `^`. This means that it will find the start point of the entries (the beginning before the first character). After that, replace it with `dict.Add "` which means that the start point will be replaced with `dict.Add "`. After that, press Replace All.
+
+https://user-images.githubusercontent.com/106564201/188349266-4c42b06b-e716-4463-a849-4defed9bf3ad.mp4
+
+19. After that, we will be replacing the `\t`s with `&&&`. Then after that, we will be replacing the `&&&`s with `","`s.
+> "Ralph, why is it that we are using `&&&`s? Can we use other characters?
+Yes. You may use other characters but make sure that they are distinct so that there would be no problems when doing the Replace All function. Examples for this would be if you just put a non-distinct character (e.g. letter 'a'), it will replace all of the letter a's with the new characters that you're planning on replacing it with.
+> "Ralph, we could just do the find `\t` and then replace them with `","`?
+Yes, you may do that but I just took this step because I'm making sure that there are no rogue `\t`s in every line which might mess up the code later on. In short, it's a method of checking whether or not the extraction is correct or not.
+
+https://user-images.githubusercontent.com/106564201/188349153-a7cbd6b1-8a46-4f1d-9b70-db22be377574.mp4
+
+20. Then, we will be replacing the end of each line with a `"` symbol to close it off. To do that type in `$` in the Find box and then replace it with a `"`. The `$` syntax tells the Find box to jump at the end of the line and replace it with the character that the user wants.
+
+https://user-images.githubusercontent.com/106564201/188349188-9ecbb833-c831-4347-a2fb-b4e6b6f5ef67.mp4
+
+21. The syntax is now ready and it should look like this:
+
+![image](https://user-images.githubusercontent.com/106564201/188349373-5088dec5-6fa1-4123-8883-a0d21b4b9509.png)
+
+Now, we will be putting this in Excel Developer Tab.
+
+22. Open up the Automation file that you have saved a while ago (the Macro-Enabled Workbook) and then navigate to:
+  Developer Tab
+    Visual Basic
+
+23. Once Visual Basic is open, click on:
+  Insert
+    Module
+After doing this, it should present you with a clean space for writing the code.
+
+![image](https://user-images.githubusercontent.com/106564201/188352686-ca483442-df39-4878-a3c6-c360efb8fff9.png)
+
+24. Rename the module with InitialRateAutomation(If you're making an Interest Rate - Initial Rate automation) or RevertRateAutomation(If you're making an Initial Rate - First Revert Rate automation). After naming the module, paste one of the following templates:
+
+## Template For Initial Rate - Interest Rate
+
+`Sub InitialRateAutomation()
+'Search for the name and assign the ID'
+
+    Dim FindCell As Range
+    Dim v As Variant
+    Dim dict As Dictionary
+    Dim ws As Worksheet
+    Set ws = ActiveSheet
+    
+    Application.ScreenUpdating = False
+    Application.Calculation = xlCalculationManual
+    
+    
+    Set dict = New Dictionary
+    
+    'Paste the dict.adds here'
+    
+    For Each v In dict.Keys
+        Set FindCell = ws.Range("A:A").Find(v)
+            If Not FindCell Is Nothing Then
+                ws.Cells(FindCell.Row, 5).Value = """" & dict.Item(v) & """:" & ws.Cells(FindCell.Row, 3).Value & ","
+            End If
+    Next
+    
+    
+    Application.ScreenUpdating = True
+    Application.Calculation = xlCalculationAutomatic
+End Sub `
+
+## Template For Revert Rate - Interest Rate
+
+`Sub RevertRateAutomation()
+'Search for the name and assign the ID'
+
+    Dim FindCell As Range
+    Dim v As Variant
+    Dim dict As Dictionary
+    Dim ws As Worksheet
+    Set ws = ActiveSheet
+    
+    Application.ScreenUpdating = False
+    Application.Calculation = xlCalculationManual
+    
+    
+    Set dict = New Dictionary
+    
+    'Paste the dict.adds here'
+    
+    For Each v In dict.Keys
+        Set FindCell = ws.Range("A:A").Find(v)
+            If Not FindCell Is Nothing Then
+                ws.Cells(FindCell.Row, 5).Value = """" & dict.Item(v) & """:" & ws.Cells(FindCell.Row, 3).Value & ","
+            End If
+    Next
+    
+    
+    Application.ScreenUpdating = True
+    Application.Calculation = xlCalculationAutomatic
+End Sub `
+
+25. After getting the correct template, we will now be pasting it into the VBA window. Now the file should look like the photo:
+
+![image](https://user-images.githubusercontent.com/106564201/188354333-99ef9e97-dc0d-49ce-9f72-5b26b8c2c599.png)
+
+26. After pasting the template. Head back to the file that we modified a while ago and then paste it in the template below the `'Paste the dict.adds here'` line. After pasting it, the VBA window should now look like the photo:
+
+![image](https://user-images.githubusercontent.com/106564201/188354504-6d27cc87-6193-4a82-90c3-135793cc1ef9.png)
+
+27. Save it and now, you have an automation file.
+
+For guides on how to use the automation, please refer to the video: https://ahlad.sharepoint.com/:v:/r/sites/ToolboxProductMaintenance/Shared%20Documents/Toolbox%20-%20Update%20automation/Automation%20Tutorial%20-%20Updating.mp4?csf=1&web=1&e=zmqrQf
+
+Thanks!
+
+Ralph
