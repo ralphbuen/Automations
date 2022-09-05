@@ -102,7 +102,8 @@ After doing this, it should present you with a clean space for writing the code.
 
 ## Template For Initial Rate - Interest Rate
 
-`Sub InitialRateAutomation()
+Sub InitialRateAutomation()
+
 'Search for the name and assign the ID'
 
     Dim FindCell As Range
@@ -129,11 +130,13 @@ After doing this, it should present you with a clean space for writing the code.
     
     Application.ScreenUpdating = True
     Application.Calculation = xlCalculationAutomatic
-End Sub `
+    
+End Sub
 
 ## Template For Revert Rate - Interest Rate
 
-`Sub RevertRateAutomation()
+Sub RevertRateAutomation()
+
 'Search for the name and assign the ID'
 
     Dim FindCell As Range
@@ -160,7 +163,8 @@ End Sub `
     
     Application.ScreenUpdating = True
     Application.Calculation = xlCalculationAutomatic
-End Sub `
+    
+End Sub
 
 25. After getting the correct template, we will now be pasting it into the VBA window. Now the file should look like the photo:
 
